@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 /**************************************************
  * MKOnlinePlayer v2.4
  * 后台音乐数据抓取模块
@@ -8,7 +10,7 @@
  *************************************************/
 
 /************ ↓↓↓↓↓ 如果网易云音乐歌曲获取失效，请将你的 COOKIE 放到这儿 ↓↓↓↓↓ ***************/
-$netease_cookie = '';
+$netease_cookie = '_ntes_nnid=eb1d3368bb4b6c15fe6a67f702f6b2a8,1528997562543; _ntes_nuid=eb1d3368bb4b6c15fe6a67f702f6b2a8; __f_=1539416744257; JSESSIONID-WYYY=OCnxCRrg7qaZVE2MzqNwef2QuXfsFAmWfilAY5CMV3bScNS1WewfOuO4OVfBC9R%2FMFIs6P4gPc9In7mZdPM0OzR%2FE3wNCDDkfUVW5Wy0WrIshRFEj0yv8gsOzI%2BN7Ur7VSny5vfrF0IiiB8Kw2%2FoRgjkPAqUTTKjDE0%5CYB5v85tg9xg0%3A1540041471776; _iuqxldmzr_=32; __utma=94650624.1717456437.1540039673.1540039673.1540039673.1; __utmc=94650624; __utmz=94650624.1540039673.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); WM_NI=JjEc7%2Fcc5egrU7Yh1V6S7Drvzkl35glcQ1F06cIVbjB5CTTL1X23zJXst3dl7irHe6Io49sEq83LHplfWnL9WZaGqytOr4uEbZXV5Mp9fIve088bUWW3mrTGT3tva6dHbzU%3D; WM_NIKE=9ca17ae2e6ffcda170e2e6ee8dcf6297b19895eb7ffc8a8fa3d84a878e9ebaf245a1979989c24d93e999b3d32af0fea7c3b92a8ab68b84b625a1bdfb86e67a97e99789b45ef68df9a5f17ebab5a4d4b86db0bd9fd2c53cf6bd87b7e16282eb8db5d748f388fed4f9429cadbcd4e768f5b7bea9e83e8bb1fcdaf24fb3e8fdadcb7cb0ba998fcf339586afa8f473b891bed5f84fa28698b7b847b4e7aaaaf56ff4e8f883d85d95eda393d74d98edbc97e43ea898ae9bd837e2a3; WM_TID=izi2auPDQ9ZBEVVEQActbZISwHTE9mZr; MUSIC_U=6bf3621ebbdf57e332db0d4a4ba6238d56738791566096c9f05c556fc87e8aba4e353008646e25cc1d44fd57ee7cf9362d00396ce29839d4bf122d59fa1ed6a2; __remember_me=true; __csrf=6cf49cd3b186a2891b956671a930fc52; jsessionid-cpta=RkBA40ilXHrjn3XeZ0DUph5qKJAKGdiBeSvg1i1NQgJmflONzVhCZZkqjXyDt5umEVMIR5xF7abp6K6ZquoREqANL44%5C4%5CbLekQjN0Yb8%2F0XcONt%5CXWVkZ8jbI4UyyixVUgEKhE46Fc04fO5TkCBUhAuXEJQ56b7FSViDqQOgw9LfLdR%3A1540040594607; c98xpt_=30; NETEASE_WDA_UID=1646809904#|#1540039728405; __utmb=94650624.3.10.1540039673';
 /************ ↑↑↑↑↑ 如果网易云音乐歌曲获取失效，请将你的 COOKIE 放到这儿 ↑↑↑↑↑ ***************/
 /**
 * cookie 获取及使用方法见 
@@ -213,7 +215,7 @@ function getParam($key, $default='')
  */
 function echojson($data)    //json和jsonp通用
 {
-    header('Content-type: application/json');
+    header('Content-type: application/javascript');
     $callback = getParam('callback');
     
     if(defined('HTTPS') && HTTPS === true && !defined('NO_HTTPS')) {    // 替换链接为 https
